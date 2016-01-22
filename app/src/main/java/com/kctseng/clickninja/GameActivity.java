@@ -2,13 +2,13 @@ package com.kctseng.clickninja;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Random;
 
 public class GameActivity extends Activity
@@ -22,9 +22,9 @@ public class GameActivity extends Activity
 
     int currentScore;
 
+    int incorrect;
 
 
-    boolean positive = true;
 
     String[] colors = {"red", "blue", "green", "yellow"};
     String[] dos = {"", "Don't "};
@@ -49,6 +49,7 @@ public class GameActivity extends Activity
         question = (TextView) findViewById(R.id.question);
 
         currentScore = 0;
+        incorrect = 0;
 
         buttonList.add(red);
         buttonList.add(blue);
@@ -94,6 +95,17 @@ public class GameActivity extends Activity
         if(acceptableSet.contains(btn))
         {
             currentScore++;
+        }
+        else
+        {
+            incorrect++;
+        }
+
+        if(incorrect == 5)
+        {
+            Intent intent = new Intent(GameActivity.this, GameOverActivity.class);
+            intent.putExtra("score", currentScore);
+            startActivity(intent);
         }
 
         TextView score = (TextView) findViewById(R.id.score);

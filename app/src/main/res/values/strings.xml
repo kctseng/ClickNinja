@@ -4,4 +4,5 @@
     <string name="question">Tap the Red</string>
     <string name="score">0</string>
     <string name="title">Click Ninja</string>
+    <string name="finalscore">0</string>
 </resources>
