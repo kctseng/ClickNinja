@@ -68,17 +68,16 @@ public class GameActivity extends Activity
         q += dos[dosdont] + "Tap on ";
 
         int color = r.nextInt(4);
+        System.out.println(dosdont);
+        System.out.println(color);
         q += colors[color];
 
-        acceptableSet.add(red);
-        acceptableSet.add(blue);
-        acceptableSet.add(green);
-        acceptableSet.add(yellow);
-
+        acceptableSet.clear();
+        acceptableSet.addAll(buttonList);
 
         if(dosdont == 1)
         {
-            acceptableSet.remove(color);
+            acceptableSet.remove(buttonList.get(color));
         }
         else
         {
