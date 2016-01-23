@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -95,10 +97,14 @@ public class GameActivity extends Activity
         if(acceptableSet.contains(btn))
         {
             currentScore++;
+            TextView score = (TextView) findViewById(R.id.score);
+            score.setText(Integer.toString(currentScore));
         }
         else
         {
             incorrect++;
+            TextView wrong = (TextView) findViewById(R.id.incorrect);
+            wrong.setText(Integer.toString(incorrect));
         }
 
         if(incorrect == 5)
@@ -107,10 +113,6 @@ public class GameActivity extends Activity
             intent.putExtra("score", currentScore);
             startActivity(intent);
         }
-
-        TextView score = (TextView) findViewById(R.id.score);
-        score.setText(Integer.toString(currentScore));
-
         generateQuestion();
     }
 
